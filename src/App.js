@@ -5,9 +5,22 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      board: ["","","","","","","","",""]
+      board: ["","","","","","","","",""],
+      players: {
+        one:
+        two:
+      }
     }
   }
+
+  handleClick = (cellIndex) => {
+    const cloneBoard = [...this.state.board]
+    cloneBoard[cellIndex] = "X" 
+    this.setState(() => ({
+        board: cloneBoard
+    }))
+  }
+
   render(){
   return (
     <div className="App">
@@ -15,8 +28,8 @@ class App extends Component {
         Tic-Tac-Toe 
       </header>
     <div id="board">
-      {this.state.board.map((cell) =>
-        <p className="cell">{cell}</p> )}
+      {this.state.board.map((cell,index) =>
+        <p key={index} className="cell" onClick= {() => this.handleClick(index)}>{cell}</p> )}
     </div>
     </div>
   );
