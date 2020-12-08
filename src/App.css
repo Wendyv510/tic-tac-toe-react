@@ -1,0 +1,42 @@
+/*.App {
+  text-align: center;
+}*/
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr; 
+  align-items: center;
+  justify-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+#board {
+  display: grid;
+  width: 300px;
+  height: 300px; 
+  grid-template-columns: repeat(3,1fr) ;
+  grid-template-rows:  repeat(3,1fr);
+  border: 4px solid white; 
+}
+
+.cell {
+  padding: 1rem;
+  margin: 0;
+  border: 1px solid white 
+}
+
