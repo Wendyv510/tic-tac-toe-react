@@ -1,12 +1,8 @@
 import React from 'react'; 
 
-const StyledMessage = styled.h2`
-    font-size: 1.8em;
-    color: red; 
-` 
 
 const Message = ({ winnerToken }) => {
-    return <StyledMessage> {winnerToken} has won the game!</StyledMessage>
+    return <h2> {winnerToken} has won the game!</h2>
 }
 
 export default Message 

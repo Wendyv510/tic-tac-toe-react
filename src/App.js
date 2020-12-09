@@ -32,7 +32,7 @@ class App extends Component {
       const [firstIndex, secondIndex, thirdIndex] = winCombo;
       const firstBoardPos = board[firstIndex];
       const secondBoardPos = board[secondIndex];
-      const thirdBoardPos = board[thisIndex];
+      const thirdBoardPos = board[thirdIndex];
 
       if (firstBoardPos === "" || secondBoardPos === "" || thirdBoardPos === ""){
         return 
@@ -63,7 +63,7 @@ class App extends Component {
     
     if (turn >= 4 && this.checkForWinner(cloneBoard)){
     this.setState(() => ({
-        board: cloneBoard;
+        board: cloneBoard,
         canPlay: false 
     }))
     return 
