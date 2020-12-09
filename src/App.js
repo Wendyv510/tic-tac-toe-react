@@ -17,11 +17,36 @@ class App extends Component {
     super(props)
     this.state = {
       board: ["","","","","","","","",""],
-      players: {
-        one:
-        two:
+      currentToken: "X",
+      turn: 0,
+      canPlay: true, 
+    };
+  }
+
+  checkForWinner = (board) => {
+    let hasWon = false; 
+
+    WIN_CONDITIONS.forEach(winCombo => {
+      const [firstIndex, secondIndex, thirdIndex] = winCombo;
+      const firstBoardPos = board[firstIndex];
+      const secondBoardPos = board[secondIndex];
+      const thirdBoardPos = board[thisIndex];
+
+      if (firstBoardPos === "" || secondBoardPos === "" || thirdBoardPos === ""){
+        return 
       }
-    }
+
+      const winCheckArray = [firstBoardPos, secondBoardPos, thirdBoardPos]
+
+      if (firstBoardPos === "X" && !winCheckArray.includes("0")){
+        hasWon = true 
+      }
+      
+      if (firstBoardPos === "O" && !winCheckArray.includes("X")){
+        hasWon = true 
+      }
+    })
+    return hasWon
   }
 
   handleClick = (cellIndex) => {
