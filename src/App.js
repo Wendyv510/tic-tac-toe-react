@@ -1,4 +1,6 @@
-import React, {Component} from 'react' 
+import React, {Component} from 'react'
+import Board from './Board';
+import Message from './Message'  
 import './App.css';
 
 const WIN_CONDITIONS = [
@@ -50,23 +52,43 @@ class App extends Component {
   }
 
   handleClick = (cellIndex) => {
-    const cloneBoard = [...this.state.board]
-    cloneBoard[cellIndex] = "X" 
+    const { board, currentToken, turn } = this.state; 
+
+    if (board[cellIndex] !== ""){
+      return 
+    }
+
+    const cloneBoard = [...board]
+    cloneBoard[cellIndex] = currentToken;
+    
+    if (turn >= 4 && this.checkForWinner(cloneBoard)){
     this.setState(() => ({
-        board: cloneBoard
+        board: cloneBoard;
+        canPlay: false 
     }))
+    return 
+  }
+
+  this.setState(() => ({
+    board: cloneBoard, 
+    currentToken: currentToken === "X" ? "O" : "X", 
+    turn: turn + 1 
+  }))
   }
 
   render(){
+    const {board, canPlay, currentToken } = this.state 
   return (
     <div className="App">
       <header className="App-header">
         Tic-Tac-Toe 
       </header>
-    <div id="board">
-      {this.state.board.map((cell,index) =>
-        <p key={index} className="cell" onClick= {() => this.handleClick(index)}>{cell}</p> )}
-    </div>
+    {!canPlay ? <Message winnerToken ={currentToken}/> : null}
+    <Board 
+      gameBoard={board} 
+      canPlay={canPlay}
+      handleClick={this.handleClick}
+    />
     </div>
   );
 }
