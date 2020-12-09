@@ -40,3 +40,8 @@
   border: 1px solid white 
 }
 
+.cell > p{
+  align-self: center;
+  justify-self: center; 
+}
+
